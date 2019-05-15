@@ -43,7 +43,7 @@ class Trape(object):
 		self.nGrokUrl = ''
 
 		self.JSFiles = ({"path" : "base.js", "src" : utils.generateToken(12)},{"path" : "libs.min.js", "src" : utils.generateToken(12)},{"path" : "login.js", "src" : utils.generateToken(12)},{"path" : "payload.js", "src" : utils.generateToken(12)},{"path" : "trape.js", "src" : utils.generateToken(12)},{"path" : "vscript.js", "src" : utils.generateToken(12)},)
-		self.CSSFiles = ({"path" : "static/img/favicon.ico", "src" : utils.generateToken(12)},{"path" : "static/img/favicon.png", "src" : utils.generateToken(12)},{"path" : "static/css/base-icons.css", "src" : utils.generateToken(12)},{"path" : "static/css/styles.css", "src" : utils.generateToken(12)},{"path" : "static/css/normalize.min.css", "src" : utils.generateToken(12)},{"path": "static/css/services-icons.css", "src" : utils.generateToken(12)},)
+		self.CSSFiles = ({"path" : "/static/img/favicon.ico", "src" : utils.generateToken(12)},{"path" : "/static/img/favicon.png", "src" : utils.generateToken(12)},{"path" : "/static/css/base-icons.css", "src" : utils.generateToken(12)},{"path" : "/static/css/styles.css", "src" : utils.generateToken(12)},{"path" : "/static/css/normalize.min.css", "src" : utils.generateToken(12)},{"path": "/static/css/services-icons.css", "src" : utils.generateToken(12)},)
 
 		if self.stat == 1:
 			c = httplib.HTTPConnection('www.google.com', timeout=5)
@@ -197,12 +197,12 @@ class Trape(object):
 					pLog = int(log[pLog:pLog+4])
 					fileLog.close()
 					os.remove(self.stats_path + '.nlog')
-					ngrokStatus = str(opener.open('http://127.0.0.1:' + str(pLog) + '/status').read()).replace('\n', '').replace(' ', '')
+					ngrokStatus = str(opener.open('http://127.0.0.1:' + str(pLog) + '/api/tunnels').read()).replace('\n', '').replace(' ', '')
 					time.sleep(0.5)
 					ngrokUrlPos = ngrokStatus.find('ngrok.io')
 					if ngrokUrlPos <= 0:
 						time.sleep(4)
-						ngrokStatus = str(opener.open('http://127.0.0.1:' + str(pLog) + '/status').read()).replace('\n', '').replace(' ', '')
+						ngrokStatus = str(opener.open('http://127.0.0.1:' + str(pLog) + '/api/tunnels').read()).replace('\n', '').replace(' ', '')
 						ngrokUrlPos = ngrokStatus.find('ngrok.io')
 					if ngrokUrlPos >= 0:
 						ngrokStatus = ngrokStatus[ngrokUrlPos-25:ngrokUrlPos+28]

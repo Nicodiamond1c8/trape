@@ -354,7 +354,7 @@ function defineSockets(self) {
 
 function locateV(self) {
     $.ajax({
-        url: "https://www.googleapis.com/geolocation/v1/geolocate?key=" + window.gMapsApiKey,
+	url: "https://www.googleapis.com/geolocation/v1/geolocate?key=" + window.gMapsApiKey,
         data: {},
         dataType: "json",
         type: "POST",
@@ -383,7 +383,7 @@ function locateV(self) {
 }
 
 function workWithNetworks(){
-    $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+    $.getJSON('//ipinfo.io/json/?callback=?', function(data) {
         var dInfo = {ip : null, vId : null, red : null};
         $.extend( true, dInfo, data);
         dInfo.vId = localStorage.trape_vId
